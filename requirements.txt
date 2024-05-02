@@ -1,0 +1,4 @@
+opeanai
+ollama
+pandas
+flask
