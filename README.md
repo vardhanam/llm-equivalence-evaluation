@@ -33,13 +33,13 @@ This code performs an equivalence evaluation between human and bot's responses b
 
 4. The `get_prompt` function is defined to generate a prompt for the LLM based on the conversation history and user response. It takes the conversation history and user response as input and returns a formatted prompt string.
 
-The `get_prompt` function is a crucial component of the LLM Equivalence Evaluation code. It takes the conversation history and user response as input and generates a well-structured prompt for the LLM.
+   The `get_prompt` function is a crucial component of the LLM Equivalence Evaluation code. It takes the conversation history and user response as input and generates a well-structured prompt for the LLM.
 
-The function starts by initializing a prompt string with instructions for the LLM on how to evaluate the equivalence between the user response and the correct answer. It then processes the conversation history, which is provided as a string representation of a list of dictionaries.
+   The function starts by initializing a prompt string with instructions for the LLM on how to evaluate the equivalence between the user response and the correct answer. It then processes the conversation history, which is provided as a string representation of a list of dictionaries.
 
-The function iterates over each message in the conversation history, extracting user and bot messages. If the user message contains an image URL, it uses the `get_text_from_image_url` function to extract the text from the image and includes it in the prompt. Finally, the function appends the final question and the user's response to the prompt string and returns the generated prompt.
+   The function iterates over each message in the conversation history, extracting user and bot messages. If the user message contains an image URL, it uses the `get_text_from_image_url` function to extract the text from the image and includes it in the prompt. Finally, the function appends the final question and the user's response to the prompt string and returns the generated prompt.
 
-The `get_prompt` function plays a vital role in providing the necessary context for the LLM to perform the equivalence evaluation accurately.
+   The `get_prompt` function plays a vital role in providing the necessary context for the LLM to perform the equivalence evaluation accurately.
 
 5. The `process_dataframe` function is defined to apply the `get_prompt` function to each row of the DataFrame. It generates a prompt for each row and adds a new column called 'Prompt' to the DataFrame.
 
