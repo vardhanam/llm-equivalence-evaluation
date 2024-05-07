@@ -1,3 +1,33 @@
+# Accuracy of Results
+
+True Positives: 608
+True Negatives: 176
+Accuracy: 98%
+
+# Strategy Used
+
+For each row in the dataset, a function prepares a prompt that includes the full conversation history, the final question asked, and the user's response. The conversation history is detailed and includes any text extracted from images, providing the LLM (GPT-4-Turbo) with all necessary context. This prompt is crucial for the LLM to determine whether the user’s response to the final question is "EQUIVALENT" or "NOT_EQUIVALENT" to what would be expected as a correct answer.
+
+Here's how it works:
+
+1. **Conversation History**: The entire dialogue, including text from any images (extracted using Open AI API), is compiled. This ensures the LLM understands the full context.
+
+2. **Final Question**: The last question asked in the conversation is highlighted as this is what the user's response pertains to.
+
+3. **User Response**: The response from the user to this question is what the LLM evaluates.
+
+The complete prompt is then sent to the LLM via the OpenAI API. It looks something like this:
+
+```plaintext
+prompt_template = "Below is a conversation history, a final question, and user response. Treat the conversation history as context, and check whether the user response is the correct answer to the final question. If it is correct then just return the word EQUIVALENT. If it is incorrect return the word NOT_EQUIVALENT. Do not return any other text.\n\n"
+Conversation History = {conversation_history}
+Final Question = {final_question}
+User Response = {user_response}
+```
+
+The LLM assesses the user's response, determining its correctness based on the given context and question. The result of this evaluation, along with the duration and cost of the API call, are recorded for analysis. This method ensures each response is evaluated comprehensively and consistently, allowing for a detailed examination of the LLM’s performance across different interactions.
+
+
 # LLM Equivalence Evaluation
 
 This code performs an equivalence evaluation between human and bot's responses based on a given conversation history. It processes a CSV file containing the conversation history and user's final response and uses the OpenAI API to compare if the human response is equivalent to the final question posed by the bot.
